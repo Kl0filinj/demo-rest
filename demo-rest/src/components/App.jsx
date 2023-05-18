@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import SharedLayout from './SharedLayout';
+import SharedLayout from './shared/SharedLayout';
 import Home from '../pages/Home';
-import Generation from '../pages/Generation';
+import { Heading } from '@chakra-ui/react';
 
 function App() {
   return (
@@ -9,7 +9,20 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="/generate" element={<Generation />} />
+          <Route
+            path="/variant-place"
+            element={<Heading>variant-place</Heading>}
+          />
+          <Route
+            path="/income-climate"
+            element={<Heading>income-climate</Heading>}
+          />
+          <Route
+            path="/transport-living"
+            element={<Heading>transport-living</Heading>}
+          />
+          <Route path="/wish" element={<Heading>wish</Heading>} />
+          <Route path="/result" element={<Heading>result</Heading>} />
         </Route>
       </Routes>
     </>
