@@ -8,7 +8,7 @@ import thirdDesert from '../assets/desert-3.jpg';
 
 import firstForest from '../assets/forest-1.jpg';
 import secondForest from '../assets/forest-2.jpg';
-import thirdForest from '../assets/forest-3.jpg';
+import thirdForest from '../assets/forest-3.jpeg';
 
 import firstMountains from '../assets/mountains-1.jpg';
 import secondMountains from '../assets/mountains-2.jpg';
