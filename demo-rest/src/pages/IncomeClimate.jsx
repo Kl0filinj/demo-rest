@@ -1,27 +1,28 @@
 import {
   Box,
-  Button,
   Heading,
-  Image,
-  Radio,
-  RadioGroup,
   Slider,
   SliderFilledTrack,
   SliderMark,
   SliderThumb,
   SliderTrack,
-  Switch,
-  Text,
   Tooltip,
 } from '@chakra-ui/react';
 import HeadingsPart from '../components/shared/HeadingsPart';
-import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import {
+  BsThermometerHigh,
+  BsThermometerSnow,
+  BsThermometerSun,
+} from 'react-icons/bs';
+import { AiFillDollarCircle } from 'react-icons/ai';
+import NextButton from '../components/shared/NextButton';
 
 const IncomeClimate = () => {
-  const [incomSliderValue, setIncomSliderValue] = useState(5);
-  const [showIncomeTooltip, setShowIncomeTooltip] = useState(false);
-  const [showClimateTooltip, setShowClimateTooltip] = useState(false);
+  const [climateSliderValue, setClimateSliderValue] = useState(20);
+  const [incomSliderValue, setIncomSliderValue] = useState(500);
+  // const [showIncomeTooltip, setShowIncomeTooltip] = useState(false);
+  // const [showClimateTooltip, setShowClimateTooltip] = useState(false);
 
   return (
     <Box>
@@ -47,41 +48,73 @@ const IncomeClimate = () => {
           >
             Climate
           </Heading>
-          <Box mt="12" width="600px" mx="auto">
+          <Box mt="12" width="700px" mx="auto">
+            <Box display="flex" justifyContent="space-between">
+              <Box
+                as={BsThermometerSnow}
+                display="inline"
+                mr="auto"
+                color="blue.600"
+              />
+              <Box
+                as={BsThermometerSun}
+                display="inline"
+                ml="auto"
+                color="red.600"
+              />
+            </Box>
             <Slider
               id="slider"
-              defaultValue={5}
-              min={0}
-              max={100}
-              colorScheme="red"
-              onChange={(v) => setIncomSliderValue(v)}
-              onMouseEnter={() => setShowClimateTooltip(true)}
-              onMouseLeave={() => setShowClimateTooltip(false)}
+              defaultValue={20}
+              min={-10}
+              max={40}
+              step={5}
+              onChange={(v) => setClimateSliderValue(v)}
+              // onMouseEnter={() => setShowClimateTooltip(true)}
+              // onMouseLeave={() => setShowClimateTooltip(false)}
             >
-              <SliderMark value={25} mt="1" ml="-2.5" fontSize="sm">
-                25%
+              <SliderMark value={-10} mt="3" ml="-2.5" fontSize="sm">
+                -10⁰С
               </SliderMark>
-              <SliderMark value={50} mt="1" ml="-2.5" fontSize="sm">
-                50%
+              <SliderMark value={-5} mt="3" ml="-2.5" fontSize="sm">
+                -5⁰С
               </SliderMark>
-              <SliderMark value={75} mt="1" ml="-2.5" fontSize="sm">
-                75%
+              <SliderMark value={0} mt="3" ml="-2.5" fontSize="sm">
+                0⁰С
               </SliderMark>
+              <SliderMark value={5} mt="3" ml="-2.5" fontSize="sm">
+                +5⁰С
+              </SliderMark>
+              <SliderMark value={10} mt="3" ml="-2.5" fontSize="sm">
+                +10⁰С
+              </SliderMark>
+              <SliderMark value={20} mt="3" ml="-2.5" fontSize="sm">
+                +20⁰С
+              </SliderMark>
+              <SliderMark value={30} mt="3" ml="-2.5" fontSize="sm">
+                +30⁰С
+              </SliderMark>
+              <SliderMark value={40} mt="3" ml="-2.5" fontSize="sm">
+                +40⁰С
+              </SliderMark>
+
               <SliderTrack
                 h="10px"
-                bgColor="linear-gradient( #0000FF 0%, #0000FF 30%, #FF0000 30%, #FF0000 100%)"
+                bg="linear-gradient(to right, rgba(0, 255, 255, 0.8) 0%, rgba(0, 255, 255, 0.8) 15%, rgba(255, 0, 0, 0.8) 70%, rgba(255, 0, 0, 0.8) 100%)"
               >
-                <SliderFilledTrack />
+                <SliderFilledTrack bgColor="transparent" />
               </SliderTrack>
               <Tooltip
                 hasArrow
                 bg="purple.400"
                 color="white"
                 placement="top"
-                isOpen={showClimateTooltip}
-                label={`${incomSliderValue}%`}
+                isOpen={true}
+                label={`${climateSliderValue}⁰С`}
               >
-                <SliderThumb />
+                <SliderThumb boxSize={6}>
+                  <Box color="black" as={BsThermometerHigh} />
+                </SliderThumb>
               </Tooltip>
             </Slider>
           </Box>
@@ -103,25 +136,47 @@ const IncomeClimate = () => {
           >
             Income
           </Heading>
-          <Box mt="12" width="600px" mx="auto">
+          <Box mt="12" width="650px" mx="auto">
             <Slider
               id="slider"
-              defaultValue={5}
-              min={0}
-              max={100}
-              colorScheme="teal"
+              defaultValue={500}
+              min={500}
+              max={10000}
+              step={500}
+              colorScheme="whatsapp"
               onChange={(v) => setIncomSliderValue(v)}
-              onMouseEnter={() => setShowIncomeTooltip(true)}
-              onMouseLeave={() => setShowIncomeTooltip(false)}
+              // onMouseEnter={() => setShowIncomeTooltip(true)}
+              // onMouseLeave={() => setShowIncomeTooltip(false)}
             >
-              <SliderMark value={25} mt="1" ml="-2.5" fontSize="sm">
-                25%
+              <SliderMark value={1000} mt="3" ml="-2.5" fontSize="sm">
+                1,000$
               </SliderMark>
-              <SliderMark value={50} mt="1" ml="-2.5" fontSize="sm">
-                50%
+              <SliderMark value={2000} mt="3" ml="-2.5" fontSize="sm">
+                2,000$
               </SliderMark>
-              <SliderMark value={75} mt="1" ml="-2.5" fontSize="sm">
-                75%
+              <SliderMark value={3000} mt="3" ml="-2.5" fontSize="sm">
+                3,000$
+              </SliderMark>
+              <SliderMark value={4000} mt="3" ml="-2.5" fontSize="sm">
+                4,000$
+              </SliderMark>
+              <SliderMark value={5000} mt="3" ml="-2.5" fontSize="sm">
+                5,000$
+              </SliderMark>
+              <SliderMark value={6000} mt="3" ml="-2.5" fontSize="sm">
+                6,000$
+              </SliderMark>
+              <SliderMark value={7000} mt="3" ml="-2.5" fontSize="sm">
+                7,000$
+              </SliderMark>
+              <SliderMark value={8000} mt="3" ml="-2.5" fontSize="sm">
+                8,000$
+              </SliderMark>
+              <SliderMark value={9000} mt="3" ml="-2.5" fontSize="sm">
+                9,000$
+              </SliderMark>
+              <SliderMark value={10000} mt="3" ml="-2.5" fontSize="sm">
+                10,000$
               </SliderMark>
               <SliderTrack h="10px">
                 <SliderFilledTrack />
@@ -131,18 +186,18 @@ const IncomeClimate = () => {
                 bg="purple.400"
                 color="white"
                 placement="top"
-                isOpen={showIncomeTooltip}
-                label={`${incomSliderValue}%`}
+                isOpen={true}
+                label={`${incomSliderValue}$`}
               >
-                <SliderThumb />
+                <SliderThumb boxSize={6}>
+                  <Box color="black" as={AiFillDollarCircle} />
+                </SliderThumb>
               </Tooltip>
             </Slider>
           </Box>
         </Box>
       </Box>
-      <Button as={NavLink} to="/transport-living" variant="solid">
-        Next Step
-      </Button>
+      <NextButton to="/transport-living" />
     </Box>
   );
 };

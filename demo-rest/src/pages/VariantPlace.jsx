@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Heading,
   Image,
   Radio,
@@ -9,13 +8,13 @@ import {
   Text,
 } from '@chakra-ui/react';
 import HeadingsPart from '../components/shared/HeadingsPart';
-import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 import beach from '../assets/beach-2.jpg';
 import desert from '../assets/desert-1.jpg';
 import forest from '../assets/forest-1.jpg';
 import mountains from '../assets/mountains-2.jpg';
+import NextButton from '../components/shared/NextButton';
 
 const VariantPlace = () => {
   const [value, setValue] = useState('0');
@@ -78,44 +77,44 @@ const VariantPlace = () => {
             </RadioGroup>
           </Box>
         </Box>
-        <Box mt="10">
-          <Heading
-            as="span"
-            position={'relative'}
-            _after={{
-              content: "''",
-              width: 'full',
-              height: '30%',
-              position: 'absolute',
-              bottom: 1,
-              left: 0,
-              bg: 'purple.400',
-              zIndex: -1,
-            }}
-          >
-            Recreation Mode
-          </Heading>
-          <Box display="flex" justifyContent="center" mt="10">
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              w="490px"
+        <Box>
+          <Box mt="10">
+            <Heading
+              as="span"
+              position={'relative'}
+              _after={{
+                content: "''",
+                width: 'full',
+                height: '30%',
+                position: 'absolute',
+                bottom: 1,
+                left: 0,
+                bg: 'purple.400',
+                zIndex: -1,
+              }}
             >
-              <Text fontSize="5xl" fontWeight="bold" color="blue.400">
-                PASSIVE
-              </Text>
-              <Switch size="lg" colorScheme="whatsapp" />
-              <Text fontSize="5xl" fontWeight="bold" color="whatsapp.400">
-                ACTIVE
-              </Text>
+              Recreation Mode
+            </Heading>
+            <Box display="flex" justifyContent="center" mt="10">
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                w="490px"
+              >
+                <Text fontSize="5xl" fontWeight="bold" color="blue.400">
+                  PASSIVE
+                </Text>
+                <Switch size="lg" colorScheme="whatsapp" />
+                <Text fontSize="5xl" fontWeight="bold" color="whatsapp.400">
+                  ACTIVE
+                </Text>
+              </Box>
             </Box>
           </Box>
         </Box>
       </Box>
-      <Button as={NavLink} to="/income-climate" variant="solid">
-        Next Step
-      </Button>
+      <NextButton to="/income-climate" />
     </Box>
   );
 };
