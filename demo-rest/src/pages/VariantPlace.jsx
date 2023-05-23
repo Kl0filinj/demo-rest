@@ -9,7 +9,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import HeadingsPart from '../components/shared/HeadingsPart';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import sea from '../assets/sea-2.jpg';
 import desert from '../assets/desert-1.jpg';
@@ -18,13 +18,18 @@ import mountains from '../assets/mountains-2.jpg';
 import NextButton from '../components/shared/NextButton';
 
 const VariantPlace = () => {
-  const [value, setValue] = useState('0');
+  const [value, setValue] = useState('Sea');
   const photos = [
     { src: sea, name: 'Sea' },
     { src: desert, name: 'Desert' },
     { src: forest, name: 'Forest' },
     { src: mountains, name: 'Mountains' },
   ];
+
+  useEffect(() => {
+    localStorage.setItem('variant', value);
+  }, [value]);
+
   return (
     <Box>
       <HeadingsPart
@@ -56,20 +61,16 @@ const VariantPlace = () => {
               onChange={setValue}
               value={value}
             >
-              {photos.map(({ src, name }, index) => (
+              {photos.map(({ src, name }) => (
                 <Radio
-                  key={index}
-                  value={String(index)}
+                  key={name}
+                  value={name}
                   colorScheme="purple"
                   size="lg"
                   display="flex"
                   flexDirection="column-reverse"
-                  //   id={index}
                 >
-                  <Badge
-                    mb="5"
-                    colorScheme={String(index) === value ? 'purple' : ''}
-                  >
+                  <Badge mb="5" colorScheme={value === name ? 'purple' : ''}>
                     {name}
                   </Badge>
                   <Image
@@ -78,9 +79,7 @@ const VariantPlace = () => {
                     transitionProperty={'outline'}
                     transitionDuration={'350ms'}
                     transitionTimingFunction={'cubic-bezier(0.4, 0, 0.2, 1)'}
-                    outline={
-                      String(index) === value ? '1.5px white solid' : 'none'
-                    }
+                    outline={value === name ? '1.5px white solid' : 'none'}
                     mb="3"
                     width="270px"
                     height="180px"

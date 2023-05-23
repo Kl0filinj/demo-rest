@@ -1,9 +1,7 @@
 import {
-  Avatar,
   Box,
   Button,
   Fade,
-  HStack,
   Heading,
   Image,
   Spinner,
@@ -66,6 +64,8 @@ const results = [
 
 const Result = () => {
   const [isDataReady, setIsDataReady] = useState(false);
+  const variant = localStorage.getItem('variant');
+  const sortedResults = results.filter((item) => item.category === variant);
 
   const formatDescription = (text) => {
     if (text.length < 285) {
@@ -91,7 +91,7 @@ const Result = () => {
         {isDataReady ? (
           <Fade in={isDataReady}>
             <Wrap spacing="30px" justify="center">
-              {results.map(
+              {sortedResults.map(
                 ({
                   poster,
                   title,
