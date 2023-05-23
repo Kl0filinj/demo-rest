@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   Heading,
   Image,
@@ -10,7 +11,7 @@ import {
 import HeadingsPart from '../components/shared/HeadingsPart';
 import { useState } from 'react';
 
-import beach from '../assets/beach-2.jpg';
+import sea from '../assets/sea-2.jpg';
 import desert from '../assets/desert-1.jpg';
 import forest from '../assets/forest-1.jpg';
 import mountains from '../assets/mountains-2.jpg';
@@ -18,6 +19,12 @@ import NextButton from '../components/shared/NextButton';
 
 const VariantPlace = () => {
   const [value, setValue] = useState('0');
+  const photos = [
+    { src: sea, name: 'Sea' },
+    { src: desert, name: 'Desert' },
+    { src: forest, name: 'Forest' },
+    { src: mountains, name: 'Mountains' },
+  ];
   return (
     <Box>
       <HeadingsPart
@@ -49,7 +56,7 @@ const VariantPlace = () => {
               onChange={setValue}
               value={value}
             >
-              {[beach, desert, forest, mountains].map((photo, index) => (
+              {photos.map(({ src, name }, index) => (
                 <Radio
                   key={index}
                   value={String(index)}
@@ -59,8 +66,14 @@ const VariantPlace = () => {
                   flexDirection="column-reverse"
                   //   id={index}
                 >
+                  <Badge
+                    mb="5"
+                    colorScheme={String(index) === value ? 'purple' : ''}
+                  >
+                    {name}
+                  </Badge>
                   <Image
-                    src={photo}
+                    src={src}
                     borderRadius="xl"
                     transitionProperty={'outline'}
                     transitionDuration={'350ms'}
@@ -71,6 +84,7 @@ const VariantPlace = () => {
                     mb="3"
                     width="270px"
                     height="180px"
+                    alt={name}
                   />
                 </Radio>
               ))}

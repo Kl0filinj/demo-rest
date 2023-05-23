@@ -1,6 +1,6 @@
-import firstBeach from '../assets/beach-1.jpg';
-import secondBeach from '../assets/beach-2.jpg';
-import thirdBeach from '../assets/beach-3.jpg';
+import firstSea from '../assets/sea-1.jpg';
+import secondSea from '../assets/sea-2.jpg';
+import thirdSea from '../assets/sea-3.jpg';
 
 import firstDesert from '../assets/desert-1.jpg';
 import secondDesert from '../assets/desert-2.jpg';
@@ -23,11 +23,11 @@ const Marquee = () => {
       <div className="marquee-container">
         <span className="marquee-inner-container ">
           {[
-            firstBeach,
+            firstSea,
             secondDesert,
-            thirdBeach,
+            thirdSea,
             firstDesert,
-            secondBeach,
+            secondSea,
             thirdDesert,
           ].map((item, index) => (
             <>
